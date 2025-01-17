@@ -1,15 +1,12 @@
 {
   "name": "staticpage-project",
-  "homepage": "https://Ivaz7.github.io/react-course/Fun-fact-react-project",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "deploy": "gh-pages -d dist"  
+    "lint": "eslint ."
   },
   "dependencies": {
     "react": "^18.3.1",
