@@ -1,0 +1,37 @@
+.inputAlphabet {
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+  gap: 0.5rem;
+}
+
+.inputButton {
+  text-align: center;
+  border: none;
+  background-color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  transition: all ease-in-out 0.3s;
+
+  &:hover {
+    box-shadow: 0 0 0.3rem #ffffffcc;
+  }
+}
+
+.correct {
+  @extend .inputButton;
+  background-color: #198754;
+
+  &:hover {
+    box-shadow: 0 0 0.3rem #198754CC;
+  }
+}
+
+.wrong {
+  @extend .inputButton;
+  background-color: #dc3545;
+
+  &:hover {
+    box-shadow: 0 0 0.3rem #dc3545CC;
+  }
+}

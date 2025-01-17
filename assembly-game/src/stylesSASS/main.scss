@@ -1,0 +1,17 @@
+@use './descriptionGame';
+@use './winOrLose';
+@use './alphabetGuess';
+@use './inputButton';
+@use './lostLang';
+@use './newGameBtn';
+@use './loading';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  border: none;
+  background-color: #1e1e1e;
+  color: white;
+}

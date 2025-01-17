@@ -1,0 +1,52 @@
+@import "./mixin";
+
+.listItem {
+  width: 29rem;
+  display: block;
+
+  h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  ul {    
+    padding: 0.5ren;
+    
+    li {
+      @include flex(row, space-between, center, 0.5rem);
+      list-style: none;
+      border-radius: 0 0 1rem 0;
+      border-bottom: 1px solid lightgray;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+
+      div {
+        @include flex(row, start, center, 0.5rem);
+      }
+
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        width: 2rem;
+        height: 2rem;
+        font-size: 1rem;
+        border-radius: 50%;  
+        border: none;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+        @include trasition();
+  
+        &:hover {
+          background-color: rgba($color: #000000, $alpha: 0.7);
+        }
+      }
+
+      span {
+        color: rgb(224, 179, 55);
+        font-size: 1.5rem;
+      }
+    }
+  }
+}

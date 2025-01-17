@@ -1,0 +1,13 @@
+.newGame {
+  all: unset;
+  background-color: #0066ff;  
+  font-size: 1.3rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  transition: all ease-in-out 0.3s;
+
+  &:hover {
+    box-shadow: 0 0 1rem #01185d; 
+  }
+}
+

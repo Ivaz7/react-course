@@ -1,0 +1,17 @@
+.btnYes {
+  border: none;
+  width: 70px;
+  text-align: center;
+  background-color: hsl(120, 84%, 39%);
+  color: white;
+  margin: 2rem;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.btnNo {
+  @extend .btnYes;
+  background-color: hsl(0, 85%, 48%);
+}

@@ -1,0 +1,66 @@
+@import '../mixin.scss';
+
+.div {
+  & > section {
+    @include flex(column, center, center, 1rem);
+    background-color: lightgray;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 0.5rem;
+    display: inline-flex;
+  
+    & > div {
+      @include flex(column, center, center, 1rem);
+
+      input {
+        background-color: black;
+        padding: 0.3rem;
+        color: white;
+        width: 100%;
+        border: none;
+        text-align: center;
+        border-radius: 0.3rem;
+      }
+
+      textarea {
+        border: none;
+        border-radius: 0.3rem;
+        padding: 0.3rem;
+        outline: none;
+      }
+
+      button {
+        width: 100%;
+        padding: 0.3rem;
+        border: none;
+        border-radius: 0.3rem;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+      }
+    }
+
+    ul {
+      width: 100%;
+      padding: 1rem;
+
+      li {
+        @include flex(column, center, start, 0.3rem);
+        margin-bottom: 0.3rem;
+
+        div:nth-child(1) {
+          @include flex(row, center, center, 0.3rem);
+          
+          button {
+            padding: 0.3rem;
+            border: none;
+            background-color: black;
+            color: white;
+            border-radius: 0.3rem;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

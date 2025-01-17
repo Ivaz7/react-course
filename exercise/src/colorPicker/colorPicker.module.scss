@@ -1,0 +1,19 @@
+@import '../mixin.scss';
+
+.colorPicker {
+  @include flex(column, center, center, 1rem);
+  display: inline-flex;
+  margin: 1rem;
+
+  .color {
+    @include flex(row, center, center, 0);
+    text-align: center;
+    border-radius: 1rem;
+    height: 120px;
+    width: 120px;
+  }
+
+  label {
+    @include flex(row, center, center, 1rem);
+  }
+}

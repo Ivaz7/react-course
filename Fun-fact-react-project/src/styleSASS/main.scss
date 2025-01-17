@@ -1,0 +1,104 @@
+@import 'config';
+
+@mixin flex($direction, $justify-content, $align-items) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify-content;
+    align-items: $align-items;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: $darker-black;
+    color: $light-gray;   
+}
+
+header {
+    background-color: $black;
+    width: 100%;
+    padding: 1rem;
+
+    .nav-links {
+        @include flex(row, space-between, center);
+
+        &-logo {
+            @include flex(row, -content, -items);
+            column-gap: 1rem;
+            color: $react-blue;
+        }
+    
+        &-items {
+            font-size: 1.7rem;
+            margin-right: 1rem;
+            text-decoration: none;
+            color: $white;
+            cursor: pointer;            
+        }
+    }
+}
+
+main {
+    @include flex(column, -content, center);
+    margin-top: 10vh;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: -10rem;
+        top: 50%;
+        width: 20rem;
+        height: 20rem;
+        transform: translateY(-25%);
+        background-image: url('../assets/react.svg');
+        background-size: contain;
+        filter: grayscale(91%);
+        background-repeat: no-repeat;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        right: -10rem;
+        top: 50%;
+        width: 20rem;
+        height: 20rem;
+        transform: translateY(-25%);
+        background-image: url('../assets/react.svg');
+        background-size: contain;
+        filter: grayscale(91%);
+        background-repeat: no-repeat;
+    }
+}
+
+ul {
+    font-size: 25px;
+    margin-top: 5px;
+
+    li {
+        line-height: 4rem;
+
+        &::marker {
+            color: $react-blue;
+            font-size: 30px;
+        }
+    }
+}
+
+footer {
+    width: 100%;
+    background-color: $dark-gray;
+    position: fixed;
+    bottom: 0;
+    display: block;
+    padding: 1rem;
+    text-align: center;
+    
+    .text {
+        color: $black
+    }
+}

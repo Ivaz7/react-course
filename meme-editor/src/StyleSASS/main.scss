@@ -1,0 +1,57 @@
+$color-primary: #A4C8FF;   
+$color-black: #4A4A4A; 
+$color-moreBlack: #1c1c1c;  
+$color-secondary: #52a8d6;  
+
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  color: $color-black;
+}
+
+body {
+  background-color: $color-moreBlack;
+  width: 100%;
+  height: 100%;
+}
+
+header {
+  background: linear-gradient(to right, $color-primary, $color-secondary);
+}
+
+button {
+  background-color: $color-secondary;
+  border: none;
+  border-radius: 0.3rem;
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: $color-primary;
+  }
+}
+
+input {
+  outline-offset: 0.2rem;
+  outline-color: $color-secondary;
+  color: $color-black;
+}
+
+form {
+  background-color: $color-black;
+
+  canvas {
+    object-fit: contain;
+    border: 0.1rem solid $color-primary
+  }
+
+  button, h2 {
+    color: white;
+  }
+}
+
+.btn-download {
+  padding: 2rem;
+  border-radius: 7rem;
+  color: white;
+  font-size: 2rem;
+}

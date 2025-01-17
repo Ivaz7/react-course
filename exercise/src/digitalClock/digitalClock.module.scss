@@ -1,0 +1,10 @@
+@import "../mixin.scss";
+
+.clock {
+  @include flex(row, center, center, 1rem);
+  display: inline-flex;
+  background-color: lightgray;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+}

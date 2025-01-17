@@ -1,0 +1,16 @@
+@mixin flex($direction, $justify-content, $align-item, $gap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify-content;
+  align-items: $align-item;
+
+  @if $direction == column {
+    row-gap: $gap;
+  } @else if $direction == row {
+    column-gap: $gap;
+  }
+}
+
+@mixin trasition() {
+  transition: 0.3s ease-in-out all;
+}

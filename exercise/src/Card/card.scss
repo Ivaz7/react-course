@@ -1,0 +1,11 @@
+@import '../mixin.scss';
+
+.card {
+  margin: 1rem;
+  @include flex(column, center, center, 1rem);
+  width: 400px;
+
+  img {
+    height: 100px;
+  }
+}
