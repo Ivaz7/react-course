@@ -1,78 +1,58 @@
-import { useState, useEffect } from "react";
+import { useQuery } from '@tanstack/react-query';
+import ReactMarkdown from 'react-markdown';
 
 function HuggingFaceFetch(prop) {
-  const [responseData, setResponseData] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(null);
+  const SYSTEM_PROMPT = "Your are an assistant that recives a list of ingredients that a user has and suggests a recipe they could make with some or all of those ingredients. You dont't need to use every ingredients they mention in your recipe. The recipe can include additional ingredients they didn't mention, but try not to include too many extra ingredients. Format your respone in markdown to make it easier to render to a web page";
+  const API_TOKEN = import.meta.env.VITE_HUGGING_FACE_TOKEN;
+  const MODEL = 'https://api-inference.huggingface.co/models/mistralai/Mixtral-8x7B-Instruct-v0.1';
 
-  useEffect(() => {
-    const SYSTEM_PROMPT = "Create a recipe using only the following ingredients. You don’t need to use all of them, but try to incorporate as many as possible to create a delicious and easy-to-follow dish. You must format the recipe for easy access on a webpage using html element, with clear sections like h1, ingredients like li, instructions like p, and optional tips or variations with li or ol.";
-    const API_TOKEN = import.meta.env.VITE_HUGGING_FACE_TOKEN;
+  const fetchData = async () => {
+    const response = await fetch(MODEL, {
+      method: 'POST',
+      headers: {
+        "Authorization": `Bearer ${API_TOKEN}`,
+        "Content-type": 'application/json'
+      },
+      body: JSON.stringify({
+        inputs: `${SYSTEM_PROMPT}, ${prop.ingredient}`
+      })
+    });
 
-    const MODEL = 'https://api-inference.huggingface.co/models/mistralai/Mixtral-8x7B-Instruct-v0.1';
-
-    async function fetchData() {
-      setLoading(true);
-      try {
-        const response = await fetch(MODEL, {
-          method: 'POST',
-          headers: {
-            "Authorization": `Bearer ${API_TOKEN}`,
-            "Content-type": 'application/json'
-          },
-          body: JSON.stringify({
-            inputs: `${SYSTEM_PROMPT}, ${prop.ingredient}`
-          })
-        });
-
-        if (!response.ok) {
-          throw new Error("Network isn't responding");
-        }
-
-        const data = await response.json();
-        let generatedText = data[0].generated_text;
-
-        generatedText = generatedText.replace(SYSTEM_PROMPT, '').trim();
-
-        const filteredHtml = filterHtmlElements(generatedText);
-
-        setResponseData(filteredHtml);
-      } catch (e) {
-        setError(e.message);
-      } finally {
-        setLoading(false);
-      }
+    if (!response.ok) {
+      throw new Error('Failed to fetch data');
     }
 
-    fetchData();
-  }, [prop.ingredient, responseData]);
+    const data = await response.json();
+    // console.log('API Response:', data);
+    let generatedText = data[0]?.generated_text;
+    generatedText = generatedText.replace(SYSTEM_PROMPT, '');
+    // console.log("Generated text trim", generatedText)
 
-  function filterHtmlElements(inputString) {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(inputString, "text/html");
-    const body = doc.body;
+    return generatedText;
+  };
 
-    if (!body) {
-      return '';
-    }
+  const { isLoading, isError, error, data } = useQuery({
+    queryKey: ['data', prop.ingredient],
+    queryFn: fetchData,
+    refetchOnWindowFocus: false,
+  });
+    
 
-    const validHtml = Array.from(body.children).map(el => el.outerHTML).join('');
-    return validHtml;
+  if (isLoading) {
+    return <h1>Loading...</h1>;
   }
 
-  if (loading) {
-    return <h1>Loading...</h1>; 
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
+  if (isError) {
+    return <div>Error: {error.message}</div>;
   }
 
   return (
-    <>
+    <div>
       <h2>Hugging Face A.I. Recommended Menu:</h2>
-      <div className="output-recipe" dangerouslySetInnerHTML={{ __html: responseData }} />
-    </>
+      <div className='output-recipe'>
+        {data && <ReactMarkdown>{data}</ReactMarkdown>}
+      </div>
+    </div>
   );
 }
 
