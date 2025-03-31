@@ -1,3 +1,5 @@
+@import './mixin';
+
 .output-recipe {
   margin-top: 1rem;
   width: 29rem;
@@ -14,4 +16,8 @@
     margin-bottom: 1rem;
     list-style-position: inside;
   }
+}
+
+.loading {
+  @include flex(row, center, center, 0);
 }
