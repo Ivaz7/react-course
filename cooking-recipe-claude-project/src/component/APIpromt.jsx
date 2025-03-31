@@ -6,7 +6,7 @@ function HuggingFaceFetch(prop) {
   const SYSTEM_PROMPT = "Your are an assistant that recives a list of ingredients that a user has and suggests a recipe they could make with some or all of those ingredients. You dont't need to use every ingredients they mention in your recipe. The recipe can include additional ingredients they didn't mention, but try not to include too many extra ingredients. Format your respone in markdown to make it easier to render to a web page";
   const API_TOKEN = import.meta.env.VITE_HUGGING_FACE_TOKEN;
   const MODEL = 'https://api-inference.huggingface.co/models/mistralai/Mixtral-8x7B-Instruct-v0.1';
-  console.log("API Token:", import.meta.env.VITE_HUGGING_FACE_TOKEN);
+  // console.log("API Token:", import.meta.env.VITE_HUGGING_FACE_TOKEN);
 
   const fetchData = async () => {
     const response = await fetch(MODEL, {
