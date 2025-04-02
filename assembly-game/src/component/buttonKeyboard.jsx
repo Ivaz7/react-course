@@ -40,7 +40,7 @@ function ButtonKeyboard(prop) {
   });
 
   return (
-    <div className="inputAlphabet m-5">
+    <div className="inputAlphabet justify-content-center align-items-center d-flex flex-wrap gap-2 m-5">
       {renderAlphabet}
     </div>
   );

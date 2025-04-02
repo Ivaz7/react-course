@@ -24,13 +24,12 @@ i {
 .explanation {
   opacity: 0;
   visibility: hidden;
-  text-align: justify;
   color: black;
   border-radius: 0.3rem;
   padding: 0.5rem;
   background-color: white;
   font-size: 1rem;
-  width: 17rem;
+  width: min(17rem, 90vw);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -48,5 +47,23 @@ i {
     top: -20%;
     left: 50%;
     transform: translate(-50%, 0);
+  }
+}
+
+@media (max-width: 572px) {
+  .explanation {
+    left: -220%;
+  }
+}
+
+@media (max-width: 393px) {
+  .explanation {
+    left: -240%;
+  }
+}
+
+@media (max-width: 253px) {
+  .explanation {
+    left: -180%;
   }
 }

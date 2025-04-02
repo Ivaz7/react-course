@@ -1,7 +1,5 @@
 .inputAlphabet {
-  display: grid;
-  grid-template-columns: repeat(13, 1fr);
-  gap: 0.5rem;
+  width: min(45rem, 90vw);
 }
 
 .inputButton {

@@ -8,7 +8,7 @@ function RenderRandomWord(prop) {
   ))
 
   return (
-    <div className="d-flex flex-row gap-1">
+    <div className="d-flex flex-row flex-wrap justify-content-center align-items-center gap-1">
       {renderWord}
     </div>
   )
