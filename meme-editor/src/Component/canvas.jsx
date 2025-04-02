@@ -5,6 +5,7 @@ import ChangeTextSize from "./changeTextSize";
 function CanvasImg({ url, inputVal, canvasRef, positions, setPositions }) {
   const [textSize, setTextSize] = useState(24);
   const [draggingIndex, setDraggingIndex] = useState(null);
+  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     setPositions(inputVal.map((_, index) => ({ x: 50, y: 50 * (index + 2) })));
@@ -24,31 +25,35 @@ function CanvasImg({ url, inputVal, canvasRef, positions, setPositions }) {
     img.src = url;
 
     img.onload = () => {
-      canvas.width = img.width * 0.5;
-      canvas.height = img.height * 0.5;
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height); 
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
+      const targetWidth = 400; 
+      const ratio = img.height / img.width;
+      const targetHeight = targetWidth * ratio;
+    
+      canvas.width = targetWidth;
+      canvas.height = targetHeight;
+    
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
+    
       const newPositions = positions.map(({ x, y }, index) => {
         ctx.font = `bold ${textSize}px Arial`;
-        ctx.fillStyle = "white"; 
+        ctx.fillStyle = "white";
         ctx.strokeStyle = "black";
         ctx.lineWidth = 10;
-
+    
         const textWidth = ctx.measureText(inputVal[index]).width;
         const textHeight = textSize * 10;
-
+    
         return { x, y, width: textWidth, height: textHeight };
       });
-
+    
       setPositions(newPositions);
-
-      positions.forEach(({ x, y }, index) => {
+    
+      newPositions.forEach(({ x, y }, index) => {
         ctx.strokeText(inputVal[index], x, y);
         ctx.fillText(inputVal[index], x, y);
       });
-    };
+    };    
 
     img.onerror = () => {
       console.error("Failed to load image:", url);
@@ -60,16 +65,20 @@ function CanvasImg({ url, inputVal, canvasRef, positions, setPositions }) {
     const rect = canvas.getBoundingClientRect();
     const mouseX = event.clientX - rect.left;
     const mouseY = event.clientY - rect.top;
-
+  
     const index = positions.findIndex(
       ({ x, y, width, height }) =>
         mouseX >= x && mouseX <= x + width && mouseY >= y - height && mouseY <= y
     );
-
+  
     if (index !== -1) {
       setDraggingIndex(index);
+      setDragOffset({
+        x: mouseX - positions[index].x,
+        y: mouseY - positions[index].y,
+      });
     }
-  };
+  };  
 
   const handleMouseMove = (event) => {
     if (draggingIndex !== null) {
@@ -77,14 +86,16 @@ function CanvasImg({ url, inputVal, canvasRef, positions, setPositions }) {
       const rect = canvas.getBoundingClientRect();
       const mouseX = event.clientX - rect.left;
       const mouseY = event.clientY - rect.top;
-
+  
       setPositions((prevPositions) =>
         prevPositions.map((pos, index) =>
-          index === draggingIndex ? { ...pos, x: mouseX, y: mouseY } : pos
+          index === draggingIndex
+            ? { ...pos, x: mouseX - dragOffset.x, y: mouseY - dragOffset.y }
+            : pos
         )
       );
     }
-  };
+  };  
 
   const handleMouseUp = () => {
     setDraggingIndex(null);

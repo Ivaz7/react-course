@@ -37,7 +37,6 @@ function APImemeFetch(prop) {
     return;
   }
 
-
   return (
     <>
       <CanvasImg positions={positions} setPositions={setPositions} canvasRef={prop.canvasRef} inputVal={prop.inputVal} url={res.data.memes[meme].url} />
