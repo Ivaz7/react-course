@@ -13,7 +13,7 @@ function LanguageElems(prop) {
   )});
 
   return (
-    <div className='d-flex flex-row flex-wrap justify-content-center align-items-center m-5 gap-2'>
+    <div style={{ width: "min(40rem, 90vw)"}} className='d-flex flex-row flex-wrap justify-content-center align-items-center m-5 gap-2'>
       {renderLang}
     </div>
   )

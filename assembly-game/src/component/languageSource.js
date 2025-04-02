@@ -35,9 +35,38 @@ export const language = [
     color: "white"
   },
   {
+    langProgram: "C++",
+    bgColor: "#00599C",
+    color: "white"
+  },
+  {
+    langProgram: "Java",
+    bgColor: "#007396",
+    color: "white"
+  },
+  {
+    langProgram: "Python",
+    bgColor: "#3776AB",
+    color: "white"
+  },
+  {
+    langProgram: "C#",
+    bgColor: "#239120",
+    color: "white"
+  },
+  {
+    langProgram: "Kotlin",
+    bgColor: "#F18E33",
+    color: "white"
+  },
+  {
+    langProgram: "Swift",
+    bgColor: "#F05138",
+    color: "white"
+  },
+  {
     langProgram: "Assembly",
     bgColor: "#A6120D",
     color: "gray"
   }
 ];
-

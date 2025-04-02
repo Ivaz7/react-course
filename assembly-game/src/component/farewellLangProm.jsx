@@ -7,8 +7,14 @@ export default function farewellLang(wrongGuessedArray) {
     "Farewell",
     "Gone but not forgotten,", 
     "Parting ways,", 
-    "Fading but not forgotten,"
-  ]
+    "Fading but not forgotten,", 
+    "Goodbye,", 
+    "Until we meet again,", 
+    "See you later,", 
+    "Take care,", 
+    "So long,", 
+    "Wishing you well,", 
+  ];  
 
   const indexLang = wrongGuessedArray.length - 1;
 
