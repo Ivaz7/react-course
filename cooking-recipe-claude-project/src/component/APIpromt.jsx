@@ -55,7 +55,7 @@ function HuggingFaceFetch(prop) {
   }
 
   return (
-    <div>
+    <div className='containerRecipe d-flex flex-column'>
       <h2>Hugging Face A.I. Recommended Menu:</h2>
       <div className='output-recipe'>
         {data && <ReactMarkdown>{data}</ReactMarkdown>}

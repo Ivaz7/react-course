@@ -6,6 +6,8 @@
   .recipeGenerate {
     @include flex(row, center, center, 1rem);
     display: inline-flex;
+    max-width: 80vw;
+    flex-wrap: wrap;
     margin: 1.7rem 0;
     background-color: lightgray;
     padding: 2rem;

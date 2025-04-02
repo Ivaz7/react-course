@@ -2,6 +2,8 @@
 
 .user-input {
   @include flex(row, center, center, 1rem);
+  flex-wrap: wrap;
+  gap: 1rem;
   margin: 2rem auto;
 
   input, button {
@@ -11,13 +13,14 @@
   }
   
   input {
-    width: 18.75rem;
+    width: min(18.75rem, 90vw);
     outline: none;
     border: 2px solid lightgray;
   }
 
   button {
     border: none;
+    max-width: 90vw;
     background-color: black;
     color: white;
     cursor: pointer;

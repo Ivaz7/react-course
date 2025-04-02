@@ -1,8 +1,12 @@
 @import './mixin';
 
+.containerRecipe {
+  width: min(29rem, 85vw);
+}
+
 .output-recipe {
   margin-top: 1rem;
-  width: 29rem;
+  width: 100%;
 
   h2, h1 {
     margin-bottom: 1.5rem;

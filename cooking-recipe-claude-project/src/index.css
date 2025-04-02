@@ -1,1 +1,5 @@
 @import "../src/styleSASS/main.scss"; 
+
+* {
+  scrollbar-color: black gray;
+}

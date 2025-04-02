@@ -1,7 +1,7 @@
 @import "./mixin";
 
 .listItem {
-  width: 29rem;
+  width: min(29rem, 90vw);
   display: block;
 
   h2 {
@@ -9,7 +9,7 @@
   }
 
   ul {    
-    padding: 0.5ren;
+    padding: 0.5rem;
     
     li {
       @include flex(row, space-between, center, 0.5rem);
