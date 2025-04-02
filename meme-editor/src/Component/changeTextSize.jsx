@@ -16,7 +16,7 @@ function ChangeTextSize(prop) {
   }
 
   return (
-    <div className="d-flex gap-2">
+    <div className="d-flex flex-column flex-sm-row gap-2">
       <button className="flex-grow-1" onClick={increase}>Increase The Text</button>
       <button className="flex-grow-1" onClick={decrease}>Decrease The Text</button>
     </div>

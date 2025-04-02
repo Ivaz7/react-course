@@ -19,10 +19,15 @@ function Main() {
   
   const renderInputList = inputEl.map((arr, index) => (
     <div className="d-flex flex-row gap-2" key={arr}>
-      <input value={inputVal[index] || ""} onChange={(e) => handleInput(index, e.target.value)} className="flex-grow-1" type="text" placeholder="Type Here" />
+      <input
+        value={inputVal[index] || ""}
+        onChange={(e) => handleInput(index, e.target.value)}
+        type="text"
+        placeholder="Type Here"
+      />
       <button onClick={() => removeInput(index)}>X</button>
     </div>
-  ))
+  ));  
   
   useEffect(() => {
     const isDisabled = inputEl.length === 4;
@@ -59,10 +64,11 @@ function Main() {
   
   return (
     <main className="d-flex flex-column m-3 p-2 gap-5 align-items-center">
-      <form className="d-flex flex-row gap-3 p-3 rounded">
+      <form className="d-flex flex-md-row flex-column gap-3 p-3 rounded">
         <div className="d-flex flex-column gap-2">
           <APImemeFetch canvasRef={canvasRef} inputVal={inputVal}/>
         </div>
+
         <div className="input-user d-flex flex-column gap-3">
           <h2>Here the text to put in:</h2>
           {renderInputList}

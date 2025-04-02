@@ -34,10 +34,12 @@ input {
   outline-offset: 0.2rem;
   outline-color: $color-secondary;
   color: $color-black;
+  width: 100%;
 }
 
 form {
   background-color: $color-black;
+  max-width: 90vw;
 
   canvas {
     object-fit: contain;
